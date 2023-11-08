@@ -50,23 +50,32 @@ ToDo.prototype.completeToDo = function(){
 
 
 function buildToDo(todo, index) {
-  // Tu código acá:
+  var toDoShell = document.createElement('div');
+  toDoShell.className = 'toDoShell';
 
-    var toDoShell = document.createElement('div');
-    toDoShell.className = 'toDoShell';
-  
-    var toDoText = document.createElement('span');
-    toDoText.innerHTML = todo.description;
-    toDoText.id = index;
-  
-    if (todo.complete === true) {
-      toDoText.className = 'completeText';
-    }
-  
-    toDoShell.appendChild(toDoText);
-  
-    return toDoShell;
+  var toDoText = document.createElement('span');
+  toDoText.innerHTML = todo.description;
+
+  var completeCheckbox = document.createElement('input');
+  completeCheckbox.type = 'checkbox';
+  completeCheckbox.id = index; // Asigna el valor del índice como ID
+  completeCheckbox.className = 'completeCheckbox';
+  completeCheckbox.checked = todo.complete; // Marca el checkbox si el ToDo está completo
+
+  completeCheckbox.addEventListener('click', completeToDo); // Agrega el evento click al checkbox
+
+  if (todo.complete === true) {
+    toDoText.className = 'completeText';
   }
+
+  toDoShell.appendChild(completeCheckbox); // Agrega el checkbox
+  toDoShell.appendChild(toDoText);
+
+  return toDoShell;
+}
+
+// Llamada a displayToDos para actualizar la vista
+
 
 
 
@@ -142,8 +151,16 @@ document.getElementById('addButton').addEventListener('click', addToDo);
 //      esta función como callback
 
 function completeToDo(event) {
-  // Tu código acá:
+  // DESCOMENTAR LA SIGUIENTE LÍNEA
+  const index = +event.target.id; // Convierte el índice a un número
+
+  // 1) Utilizando el índice suministrado, llamar a 'completeToDo' en el elemento correspondiente del array toDoItems
+  toDoItems[index].completeToDo();
+
+  // 2) Llamar a displayToDos para actualizar los elementos que se muestran en pantalla
+  displayToDos();
 }
+
 
 // Una vez que llegaste a este punto verificá que todos los tests pasen
 
