@@ -9,6 +9,17 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
   // usa matchFunc para identificar elementos que matchien
 
   // TU CÓDIGO AQUÍ
+  if (matchFunc(startEl)) resultSet.push(startEl);
+
+
+  //Recursion
+  for (const child of startEl.children) {
+    resultSet.push(...traverseDomAndCollectElements(matchFunc, child))
+  }
+
+
+  //
+  return resultSet
 };
 
 // Detecta y devuelve el tipo de selector
