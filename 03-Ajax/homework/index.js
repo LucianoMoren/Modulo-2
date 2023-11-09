@@ -23,11 +23,10 @@ users.addEventListener("click", viewList);
 function search() {
     const [input] = $('#input');
     var id = input.value; 
-    // input.innerHTML = ""; 
     input.value = "";
 
     $.get(`${url}/${id}`, (res) => {
-        const amigo = document.getElementById('amigo')// => const [amigo] = $('#amigo');
+        const amigo = document.getElementById('amigo')
         amigo.innerHTML = res.name;
     });
 };
