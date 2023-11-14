@@ -7,13 +7,13 @@
 }
 
 .divContent button {
-    font-size: 1em;
+  font-size: 1em;
   text-align: center;
-    margin-left: 2em;
-    border-radius: 0.3em;
+  margin-left: 2em;
+  border-radius: 0.3em;
 }
 
-.divContent button:hover{
-    background-color: #4f772d;
-    color: #f6f4e6;
+.divContent button:hover {
+  background-color: #4f772d;
+  color: #f6f4e6;
 }
